@@ -20,13 +20,17 @@ and open the template in the editor.
                     xfbml: true,
                     version: 'v3.1'
                 });
-
                 FB.AppEvents.logPageView();
                 console.log("haii");
                 FB.login(function (response) {
                     if (response.authResponse) {
                         console.log("authres");
-                        window.top.location = "http://localhost:8080/OAuth-authorization-demo-with-facebook/OAuth_demo/home.html";
+
+
+//                        window.top.location = "https://graph.facebook.com/oauth/authorize?response_type= token&client_id=238515270159151&redirect_uri=http://localhost:8080/OAuth-authorization-demo-with-facebook/OAuth_demo/home.php&scope=email%20public_profile";
+ //window.top.location = "https://graph.facebook.com/oauth/authorize?response_type= token&client_id=238515270159151&redirect_uri=http://localhost:8080/OAuth-authorization-demo-with-facebook/OAuth_demo/home.php&scope=email%20public_profile";
+
+window.top.location ="home.php"
                     }
                 });
                 FB.getLoginStatus(function (response) {
@@ -38,11 +42,16 @@ and open the template in the editor.
                         // and signed request each expire.
                         var uid = response.authResponse.userID;
                         var accessToken = response.authResponse.accessToken;
-                        console.log("connected");
-//                        location.href="home.html";
+//                        console.log(accessToken);
 
+function setCookie(cname, cvalue) {
+   
+   
+   
+    document.cookie = cname + "=" + cvalue + ";"  + ";path=/";
+}
 
-
+    setCookie('token', accessToken);
                     } else if (response.status === 'authorization_expired') {
                         // The user has signed into your application with
                         // Facebook Login but must go through the login flow
@@ -64,9 +73,7 @@ and open the template in the editor.
                         console.log("notlogin");
                     }
                 });
-
             };
-
             (function (d, s, id) {
                 var js, fjs = d.getElementsByTagName(s)[0];
                 if (d.getElementById(id)) {
@@ -77,10 +84,6 @@ and open the template in the editor.
                 js.src = "https://connect.facebook.net/en_US/sdk.js";
                 fjs.parentNode.insertBefore(js, fjs);
             }(document, 'script', 'facebook-jssdk'));
-
-
-
-
 //            FB.getLoginStatus(function (response) {
 //                statusChangeCallback(response);
 //            });
@@ -111,7 +114,7 @@ and open the template in the editor.
         </div>
         <div id="fb-root"></div>
         <script>
-           (function (d, s, id) {
+            (function (d, s, id) {
                 var js, fjs = d.getElementsByTagName(s)[0];
                 if (d.getElementById(id))
                     return;
@@ -119,7 +122,7 @@ and open the template in the editor.
                 js.id = id;
                 js.src = 'https://connect.facebook.net/en_US/sdk.js#xfbml=1&version=v3.1&appId=238515270159151&autoLogAppEvents=1';
                 fjs.parentNode.insertBefore(js, fjs);
-            }(document, 'script', 'facebook-jssdk')); 
+            }(document, 'script', 'facebook-jssdk'));
         </script>
         <div class="fb-login-button" data-max-rows="1" data-size="large" data-button-type="continue_with" data-show-faces="false" data-auto-logout-link="false" data-use-continue-as="false"></div>
 
