@@ -26,11 +26,7 @@ and open the template in the editor.
                     if (response.authResponse) {
                         console.log("authres");
 
-
-//                        window.top.location = "https://graph.facebook.com/oauth/authorize?response_type= token&client_id=238515270159151&redirect_uri=http://localhost:8080/OAuth-authorization-demo-with-facebook/OAuth_demo/home.php&scope=email%20public_profile";
- //window.top.location = "https://graph.facebook.com/oauth/authorize?response_type= token&client_id=238515270159151&redirect_uri=http://localhost:8080/OAuth-authorization-demo-with-facebook/OAuth_demo/home.php&scope=email%20public_profile";
-
-window.top.location ="home.php"
+                        window.top.location = "home.php"
                     }
                 });
                 FB.getLoginStatus(function (response) {
@@ -43,33 +39,23 @@ window.top.location ="home.php"
                         var uid = response.authResponse.userID;
                         var accessToken = response.authResponse.accessToken;
 //                        console.log(accessToken);
+                        console.log("connected");
+                        function setCookie(cname, cvalue) {
 
-function setCookie(cname, cvalue) {
-   
-   
-   
-    document.cookie = cname + "=" + cvalue + ";"  + ";path=/";
-}
+                            console.log("cookie set");
+                            console.log(cvalue);
+                            document.cookie = cname + "=" + cvalue + ";path=/";
+                        }
 
-    setCookie('token', accessToken);
+                        setCookie('token', accessToken);
                     } else if (response.status === 'authorization_expired') {
-                        // The user has signed into your application with
-                        // Facebook Login but must go through the login flow
-                        // again to renew data authorization. You might remind
-                        // the user they've used Facebook, or hide other options
-                        // to avoid duplicate account creation, but you should
-                        // collect a user gesture (e.g. click/touch) to launch the
-                        // login dialog so popup blocking is not triggered.
+
                         console.log("authorization_expired");
                     } else if (response.status === 'not_authorized') {
-                        // The user hasn't authorized your application.  They
-                        // must click the Login button, or you must call FB.login
-                        // in response to a user gesture, to launch a login dialog.
+
                         console.log("not_authorized");
                     } else {
-                        // The user isn't logged in to Facebook. You can launch a
-                        // login dialog with a user gesture, but the user may have
-                        // to log in to Facebook before authorizing your application.
+
                         console.log("notlogin");
                     }
                 });
@@ -84,21 +70,6 @@ function setCookie(cname, cvalue) {
                 js.src = "https://connect.facebook.net/en_US/sdk.js";
                 fjs.parentNode.insertBefore(js, fjs);
             }(document, 'script', 'facebook-jssdk'));
-//            FB.getLoginStatus(function (response) {
-//                statusChangeCallback(response);
-//            });
-//            {
-//                status: 'connected',
-//                window.location="home.html";
-//                        authResponse: {
-//                            accessToken: '...',
-//                            expiresIn: '...',
-//                            signedRequest: '...',
-//                            userID: '...'
-//                        }
-//            }
-
-
 
         </script>
         <div>
