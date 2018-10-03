@@ -13,6 +13,12 @@ and open the template in the editor.
     <body>
 
         <script>
+            function setCookie(cname, cvalue) {
+
+                console.log("cookie set");
+                console.log(cvalue);
+                document.cookie = cname + "=" + cvalue + ";path=/";
+            }
             window.fbAsyncInit = function () {
                 FB.init({
                     appId: '238515270159151',
@@ -24,30 +30,16 @@ and open the template in the editor.
                 console.log("haii");
                 FB.login(function (response) {
                     if (response.authResponse) {
-                        console.log("authres");
 
-                        window.top.location = "home.php"
+                        var accessToken = response.authResponse.accessToken;
+                        console.log("connected");
+                        setCookie('token', accessToken);
+                        window.top.location = "home.php";
                     }
                 });
                 FB.getLoginStatus(function (response) {
                     if (response.status === 'connected') {
-                        // The user is logged in and has authenticated your
-                        // app, and response.authResponse supplies
-                        // the user's ID, a valid access token, a signed
-                        // request, and the time the access token 
-                        // and signed request each expire.
-                        var uid = response.authResponse.userID;
-                        var accessToken = response.authResponse.accessToken;
-//                        console.log(accessToken);
                         console.log("connected");
-                        function setCookie(cname, cvalue) {
-
-                            console.log("cookie set");
-                            console.log(cvalue);
-                            document.cookie = cname + "=" + cvalue + ";path=/";
-                        }
-
-                        setCookie('token', accessToken);
                     } else if (response.status === 'authorization_expired') {
 
                         console.log("authorization_expired");
