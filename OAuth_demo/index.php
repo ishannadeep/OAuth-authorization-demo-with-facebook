@@ -27,7 +27,7 @@ and open the template in the editor.
                     version: 'v3.1'
                 });
                 FB.AppEvents.logPageView();
-                console.log("haii");
+               
                 FB.login(function (response) {
                     if (response.authResponse) {
 
@@ -65,7 +65,7 @@ and open the template in the editor.
 
         </script>
         <div>
-            <form action="login.php" method="post" >
+            <form action="#" method="post" >
                 <label>user name</label>
                 <input type="text" name="userName" style="width: 100px;"><br>
                 <label>Password</label>
@@ -87,15 +87,7 @@ and open the template in the editor.
                 fjs.parentNode.insertBefore(js, fjs);
             }(document, 'script', 'facebook-jssdk'));
         </script>
-        <div class="fb-login-button" data-max-rows="1" data-size="large" data-button-type="continue_with" data-show-faces="false" data-auto-logout-link="false" data-use-continue-as="false"></div>
+<div class="fb-login-button" data-max-rows="1" data-size="large" data-button-type="continue_with" data-show-faces="false" data-auto-logout-link="false" data-use-continue-as="false"></div>
 
-        <div>
-            <form action="https://facebook.com/oauth/authorize?response_type= token&client_id=209518916300016&redirect_uri=http%3A%2F%2Flocalhost%3A8080%2FOAuth-authorization-demo-with-facebook%2FOAuth_demo%2Flogin.php&scope=public_profile%20user_posts%20user_friends%20user_photos" method="get" >
-
-                <input type="submit" value="go" >
-
-            </form><br>
-
-        </div>
     </body>
 </html>
