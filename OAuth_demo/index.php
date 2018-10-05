@@ -8,7 +8,9 @@ and open the template in the editor.
     <head>
         <meta charset="UTF-8">
         <title></title>
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
     </head>
     <body>
 
@@ -27,7 +29,7 @@ and open the template in the editor.
                     version: 'v3.1'
                 });
                 FB.AppEvents.logPageView();
-               
+
                 FB.login(function (response) {
                     if (response.authResponse) {
 
@@ -64,16 +66,27 @@ and open the template in the editor.
             }(document, 'script', 'facebook-jssdk'));
 
         </script>
-        <div>
-            <form action="#" method="post" >
-                <label>user name</label>
-                <input type="text" name="userName" style="width: 100px;"><br>
-                <label>Password</label>
-                <input type="password" name="password" style="width: 100px;"><br>
-                <input type="submit" value="go" >
+        <div class="container" style="margin-top: 100px">
+            <form class="form-horizontal" action="/action_page.php">
+                <div class="form-group">
+                    <label class="control-label col-sm-2" >User Name:</label>
+                    <div class="col-sm-10">
+                        <input type="text" class="form-control" id="user" placeholder="Enter User Name" name="username">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="control-label col-sm-2" for="pwd">Password:</label>
+                    <div class="col-sm-10">          
+                        <input type="password" class="form-control" id="pwd" placeholder="Enter password" name="pwd">
+                    </div>
+                </div>
 
-            </form><br>
-
+                <div class="form-group">        
+                    <div class="col-sm-offset-2 col-sm-10">
+                        <button type="submit" class="btn btn-default">Submit</button>
+                    </div>
+                </div>
+            </form>
         </div>
         <div id="fb-root"></div>
         <script>
@@ -87,7 +100,6 @@ and open the template in the editor.
                 fjs.parentNode.insertBefore(js, fjs);
             }(document, 'script', 'facebook-jssdk'));
         </script>
-<div class="fb-login-button" data-max-rows="1" data-size="large" data-button-type="continue_with" data-show-faces="false" data-auto-logout-link="false" data-use-continue-as="false"></div>
-
+        <div class="fb-login-button" data-max-rows="1" data-size="large" data-button-type="continue_with" data-show-faces="false" data-auto-logout-link="false" data-use-continue-as="false" style="margin-left: 315px;"></div>
     </body>
 </html>
